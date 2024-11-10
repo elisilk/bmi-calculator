@@ -1,0 +1,861 @@
+/* ----- Style Sheet Begin ----- */
+
+/* ----- Fonts ----- */
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400, 600;
+  src: url("assets/fonts/Inter-VariableFont_slnt%2Cwght.ttf") format("truetype");
+  font-display: swap;
+}
+
+/* ----- Custom properties ----- */
+
+:root {
+  /* Colors */
+  --clr-blue: hsl(227, 92%, 58%); /* #345ff6 / Blue */
+  --clr-gunmetal: hsl(215, 31%, 21%); /* #253347 / Gunmetal */
+  --clr-dark-electric-blue: hsl(
+    215,
+    17%,
+    44%
+  ); /* #5e6e85 / Dark Electric Blue */
+  --clr-pure-white: hsl(0, 0%, 100%); /* #ffffff / Pure White */
+  --clr-red: hsl(0, 66%, 54%); /* Red */
+
+  --clr-body: var(--clr-dark-electric-blue);
+  --clr-heading: var(--clr-gunmetal);
+
+  --clr-gradient1: linear-gradient(
+    to top left,
+    hsl(from #d6e6fe h s l / 1),
+    hsl(from #d6fcfe h s l / 0)
+  ); /* #d6e6fe / 100% -> #d6fcfe / 0% */
+  --clr-gradient2: linear-gradient(
+    to top left,
+    hsl(from #d6e6fe h s l / 0.35),
+    hsl(from #d6fcfe h s l / 0)
+  ); /* #d6e6fe / 100% -> #d6fcfe / 0% */
+
+  --clr-shadow: 16px 32px 56px 0px hsl(from #8faecf h s l / 0.25);
+
+  /* Typography */
+
+  --ff-base: "Inter", sans-serif;
+
+  --fw-regular: 400;
+  --fw-bold: 600;
+
+  --lh-body: 150%;
+  --lh-heading: 110%;
+
+  /* Fluid typography and spacing (key viewport sizes)
+   *
+   * (m) Mobile -> (t) Tablet
+   * 400px / 25rem (m) -> 720px / 45rem (t)
+   *
+   * (t) Tablet -> (d) Desktop
+   * 1040px / 65rem (t) -> 1360px / 85rem (d)
+   */
+
+  --fs-body-s: 0.875rem; /* 14px - Body S (Semibold / 150%) */
+  --fs-body-m: 1rem; /* 16px - Body M (Regular or Semibold / 150%) */
+
+  --fs-heading-s: 1.25rem; /* 20px (no change) - Heading S (Semibold / 110%) */
+  --fs-heading-m: 1.5rem; /* 24px (no change) - Heading M (Semibold / 110%) */
+  --fs-heading-l: clamp(
+    2rem,
+    -1.25rem + 5vw,
+    3rem
+  ); /* 32px (t) -> 48px (d) - Heading L (Semibold / 110%) */
+  --fs-heading-xl: clamp(
+    3rem,
+    -0.25rem + 5vw,
+    4rem
+  ); /* 48px (t) -> 64px (d) - Heading XL (Semibold / 110%) */
+
+  /* Spacing */
+  --space-300: clamp(1rem, 0.375rem + 2.5vw, 1.5rem); /* (m) 16px -> (t) 24px */
+  --space-400: clamp(1.5rem, 0.875rem + 2.5vw, 2rem); /* (m) 24px -> (t) 32px */
+  --space-425: clamp(
+    1.5rem,
+    -0.734375rem + 3.4375000000000004vw,
+    2.1875rem
+  ); /* (t) 24px -> (d) 35px */
+  --space-475: clamp(
+    2rem,
+    1.390625rem + 0.9375000000000001vw,
+    2.1875rem
+  ); /* (t) 32px -> (d) 35px */
+  --space-500: clamp(1.5rem, 0.25rem + 5vw, 2.5rem); /* (m) 24px -> (t) 40px */
+  --space-700: clamp(
+    3.75rem,
+    1.3124999999999996rem + 3.7500000000000004vw,
+    4.5rem
+  ); /* (t) 60px -> (d) 72px */
+  --space-800: clamp(
+    4.5rem,
+    2.625rem + 7.500000000000001vw,
+    6rem
+  ); /* (m) 72px -> (t) 96px */
+  --space-900: clamp(
+    6rem,
+    1.1249999999999991rem + 7.500000000000001vw,
+    7.5rem
+  ); /* (t) 96px -> (d) 120px */
+
+  /*
+   * What should the viewport break points be?
+   * (m) Mobile [375px] -> (t) Tablet [768px]
+   *     breakpoint at -> 704px / 44rem
+   * (t) Tablet [768px] -> (d) Desktop [1440px]
+   *     breakpoint at -> 992px / 62rem
+   */
+
+  --breakpoint-mobile-to-tablet: 704px;
+  --breakpoint-tablet-to-desktop: 992px;
+}
+
+/* ----- Global styling ----- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+p,
+li {
+  text-wrap: pretty;
+  max-width: 65ch;
+}
+
+[role="list"] {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+img,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+button,
+input {
+  font-family: inherit;
+}
+
+body {
+  margin: 0;
+}
+
+/* ----- Typography ----- */
+
+body {
+  color: var(--clr-body);
+  font-family: var(--ff-base);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-body); /* 1.5 */
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--clr-heading);
+  text-wrap: balance;
+}
+
+.heading-xl {
+  font-size: var(--fs-heading-xl);
+  line-height: var(--lh-heading); /* 1.1 */
+  font-weight: var(--fw-bold);
+  letter-spacing: calc(var(--fs-heading-xl) * -0.05);
+}
+
+.heading-l {
+  font-size: var(--fs-heading-l);
+  line-height: var(--lh-heading); /* 1.1 */
+  letter-spacing: calc(var(--fs-heading-l) * -0.05);
+}
+
+.heading-m {
+  font-size: var(--fs-heading-m);
+  line-height: var(--lh-heading); /* 1.1 */
+  font-weight: var(--fw-bold);
+  letter-spacing: calc(var(--fs-heading-m) * -0.05);
+}
+
+.heading-s {
+  font-size: var(--fs-heading-s);
+  line-height: var(--lh-heading); /* 1.1 */
+  font-weight: var(--fw-bold);
+  letter-spacing: calc(var(--fs-heading-s) * -0.05);
+}
+
+.body-m {
+  font-size: var(--fs-body-m);
+  line-height: var(--lh-body); /* 1.5 */
+  font-weight: var(--fw-regular);
+}
+
+.body-m-bold {
+  font-weight: var(--fw-bold);
+}
+
+.body-s {
+  font-size: var(--fs-body-s);
+  line-height: var(--lh-body); /* 1.5 */
+  font-weight: var(--fw-regular);
+}
+
+/* ----- Inverted (colors) ----- */
+
+.inverted {
+  color: var(--clr-pure-white);
+  background-color: var(--clr-blue);
+}
+
+/* ----- Layout ----- */
+
+main,
+section {
+  container-type: inline-size;
+}
+
+main {
+  min-width: 320px;
+  margin-block-end: var(--flow-space-xl);
+}
+
+.flow {
+  --_flow-space: var(--flow-space, 1em);
+}
+
+.flow > * + * {
+  margin-block-start: var(--_flow-space);
+}
+
+.flow--m {
+  --flow-space: var(--space-400);
+}
+
+.flow--xl {
+  --flow-space: var(--space-800);
+}
+
+.flow--xl > :last-child {
+  margin-block-end: var(--space-900);
+}
+
+.content-grid,
+.full-width {
+  /* 
+   * What is the best inner container max-width?
+   * (a) 1160px
+   * OR
+   * (b) 1392px = 1440px - 2 x 24px
+   */
+  --padding-inline: var(--space-500);
+  --content-max-width: 1160px;
+  --feature-max-width: 1392px;
+
+  --content-width: min(
+    var(--content-max-width),
+    calc(100% - 2 * var(--padding-inline))
+  );
+
+  --full-track-size: minmax(0, 1fr);
+  --feature-track-size: minmax(
+    0,
+    calc((var(--feature-max-width) - var(--content-max-width)) / 4)
+  );
+  --breakout-track-size: minmax(
+    var(--padding-inline),
+    calc((var(--feature-max-width) - var(--content-max-width)) / 4)
+  );
+
+  display: grid;
+  grid-template-columns:
+    [full-start]
+    var(--full-track-size)
+    [feature-start]
+    var(--feature-track-size)
+    [breakout-start]
+    var(--breakout-track-size)
+    [content-start]
+    var(--content-width)
+    [content-end]
+    var(--breakout-track-size)
+    [breakout-end]
+    var(--feature-track-size)
+    [feature-end]
+    var(--full-track-size)
+    [full-end];
+}
+
+.content-grid > :not(.breakout, .full),
+.full > :not(.breakout, .full) {
+  grid-column: content;
+}
+
+.content-grid > .breakout {
+  grid-column: breakout;
+}
+
+.content-grid > .feature {
+  grid-column: feature;
+}
+
+.content-grid > .full {
+  grid-column: full;
+}
+
+.two-columns {
+  display: grid;
+  gap: 1rem;
+
+  @container (width > 400px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.two-columns--wider {
+  display: grid;
+  gap: 1rem;
+
+  @container (width > 300px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.two-columns--forced {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.desktop-left-aligned {
+  text-align: center;
+
+  & > * {
+    margin-inline: auto;
+  }
+
+  @media (width > 992px) {
+    text-align: left;
+  }
+}
+
+/* ----- Sections ----- */
+
+/* ----- Section Hero (overlapping) ----- */
+
+.hero {
+  display: grid;
+  align-items: start;
+  grid-template-rows:
+    min-content
+    min-content
+    1fr
+    auto;
+  grid-template-columns:
+    var(--space-500)
+    1fr
+    var(--space-500);
+
+  grid-template-areas:
+    ". logo ."
+    ". text ."
+    ". calculator . "
+    ". calculator .";
+}
+
+.hero::before {
+  grid-column: 1 / -1;
+  grid-row: 1 / -2;
+  align-self: stretch;
+  content: "";
+  width: 100%;
+  height: 640px;
+  border-bottom-left-radius: 35px;
+  border-bottom-right-radius: 35px;
+  background: var(--clr-gradient1);
+}
+
+@media only screen and (width > 992px) {
+  .hero {
+    column-gap: 2rem;
+    grid-template-rows: 166px 99px auto 1fr;
+    grid-template-columns:
+      calc(116px - 32px)
+      1fr
+      1fr
+      calc(116px - 32px);
+    grid-template-areas:
+      ". logo logo ."
+      ". . calculator ."
+      ". text calculator ."
+      ". text calculator .";
+  }
+
+  .hero::before {
+    width: 978px;
+    height: 737px;
+  }
+}
+
+.hero__logo {
+  grid-area: logo;
+
+  margin-inline: auto;
+  margin-block-start: 2rem; /* 32px */
+  margin-block-end: var(--space-500); /* (m) 24px -> (t) 40px */
+
+  aspect-ratio: 1;
+  height: 40px;
+
+  @media (width > 992px) {
+    margin-inline: 0;
+    margin-block-start: 4.625rem; /* 74px */
+    height: 64px;
+  }
+}
+
+.hero__text {
+  grid-area: text;
+  padding-block-end: 2rem;
+}
+
+.hero__calculator {
+  grid-area: calculator;
+  container-type: inline-size;
+}
+
+.hero__calculator {
+  border-radius: 16px;
+  background-color: var(--clr-pure-white);
+  box-shadow: var(--clr-shadow);
+  padding: var(--space-400); /* (m) 24px -> (t) 32px */
+}
+
+/* ----- Section Meaning ----- */
+
+.section--meaning {
+  margin-block-start: var(--space-800); /* (m) 72px -> (t) 96px */
+  align-items: end;
+  display: grid;
+  row-gap: 3rem; /* 48px */
+  /* width: 841px; */ /* (t) 841px -> (d) 1160px */
+
+  & > div {
+    margin-inline: 1.5rem;
+    /* width: 331px; */ /* (t) 331px -> (d) 465px */
+    display: grid;
+    gap: var(--space-475);
+  }
+
+  @media (width > 704px) {
+    justify-self: end;
+    width: clamp(
+      52.5625rem,
+      -12.234375rem + 99.6875vw,
+      72.5rem
+    ); /* (t) 841px -> (d) 1160px */
+    column-gap: clamp(
+      4.6875rem,
+      -6.687500000000002rem + 17.5vw,
+      8.1875rem
+    ); /* (t) 75px -> (d) 131px */
+    grid-template-columns: 1fr clamp(
+        20.6875rem,
+        -6.53125rem + 41.875vw,
+        29.0625rem
+      ); /* (t) 331px -> (d) 465px */
+    margin-inline-end: 41px;
+
+    & > div {
+      margin-inline: unset;
+      margin-block-end: clamp(
+        2.125rem,
+        0.9062499999999998rem + 1.8750000000000002vw,
+        2.5rem
+      ); /* (t) 34px -> (d) 40px */
+    }
+  }
+
+  @media (width > 992px) {
+    margin-block-start: 13px;
+    padding-block-start: 52px;
+    grid-template-columns: 1fr 465px;
+    justify-self: unset;
+    margin-inline: auto;
+  }
+
+  @media (width > 1160px) {
+    background-image: url("assets/images/pattern-curved-line-left.svg");
+    background-repeat: no-repeat;
+    background-position: top 0 right 27px;
+  }
+}
+
+/* ----- Section Tips ----- */
+
+.section--tips {
+  margin-block-start: var(--space-800); /* (m) 72px -> (t) 96px */
+  border-radius: 35px;
+  background: var(--clr-gradient2);
+  padding-block: var(--space-700);
+
+  @media (width > 992px) {
+    margin-block-start: 7.875rem; /* 126px */
+  }
+}
+
+/* ----- Section Limitations ----- */
+
+.section--limitations {
+  margin-block-start: var(--space-800); /* (m) 72px -> (t) 96px */
+  margin-block-end: 6rem; /* 96px */
+
+  display: grid;
+  gap: 3.5rem; /* 56px */
+
+  @media (width > 992px) {
+    margin-block: var(--space-900); /* 120px */
+
+    gap: 0;
+    grid-template-columns: 1fr 365px 596px;
+    /* 199px 365px 596px */
+
+    & :first-child {
+      grid-row: 1;
+      grid-column: 1 / 3;
+    }
+
+    & :last-child {
+      grid-row: 1;
+      grid-column: 2 / -1;
+    }
+  }
+
+  @media (width > 1160px) {
+    background-image: url("assets/images/pattern-curved-line-right.svg");
+    background-repeat: no-repeat;
+    background-position: top 251px left 165px;
+  }
+}
+
+.list--limitations {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  column-gap: 0.9375rem; /* 15px */
+  row-gap: var(--space-300); /* (m) 16px -> (t) 24px */
+
+  & > * {
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: 335.5px;
+  }
+
+  @media (width > 992px) {
+    justify-content: start;
+    column-gap: 2rem; /* 32px */
+
+    & > :nth-child(1) {
+      margin-inline-start: 497px;
+    }
+
+    & > :nth-child(2) {
+      margin-inline-start: 199px;
+    }
+
+    & > * {
+      flex-basis: 365px;
+    }
+  }
+}
+
+/* ----- Form Inputs ----- */
+
+.bmi-calculator-input {
+  container-type: inline-size;
+}
+
+.bmi-calculator-input input[type="submit"] {
+  display: none;
+}
+
+.bmi-calculator-input fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.radio-wrapper {
+  --radio-outer-size: 31px;
+  --radio-inner-size: 15px;
+  --radio-gap: 18px;
+  position: relative;
+
+  input[type="radio"] {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    opacity: 0;
+    width: var(--radio-outer-size);
+    height: var(--radio-outer-size);
+
+    + label {
+      position: relative;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      height: var(--radio-outer-size);
+      margin-inline-start: calc(var(--radio-outer-size) + var(--radio-gap));
+
+      font-size: var(--fs-body-m);
+      line-height: var(--lh-body); /* 1.5 */
+      font-weight: var(--fw-bold);
+      color: var(--clr-gunmetal);
+
+      &::before {
+        content: "";
+        position: absolute;
+        display: inline-block;
+        width: var(--radio-outer-size);
+        height: var(--radio-outer-size);
+        transform: translateX(calc(-100% - var(--radio-gap)));
+        background-color: transparent;
+        border-radius: 50%;
+        border: 1px solid var(--clr-dark-electric-blue);
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        display: inline-block;
+        width: var(--radio-inner-size);
+        height: var(--radio-inner-size);
+        transform: translateX(
+          calc(
+            -100% - var(--radio-gap) - ((
+                    var(--radio-outer-size) - var(--radio-inner-size)
+                  ) / 2)
+          )
+        );
+        border-radius: 50%;
+      }
+    }
+
+    &:checked {
+      + label::before {
+        border: 1px solid transparent;
+        background-color: hsl(from var(--clr-blue) h s l / 0.15);
+      }
+
+      + label::after {
+        background-color: var(--clr-blue);
+      }
+    }
+
+    &:hover,
+    &:focus-visible {
+      + label::before {
+        border: 1px solid var(--clr-blue);
+      }
+    }
+  }
+}
+
+.input-label {
+  /* Body S */
+  font-size: var(--fs-body-s);
+  line-height: 150%;
+  color: var(--clr-dark-electric-blue);
+  display: block;
+  margin-block-end: 0.5rem;
+}
+
+.input {
+  --padding-inline: 1.5rem; /* 24px */
+  --padding-block: 1.25rem; /* 20px */
+  position: relative;
+}
+
+.input-numeric,
+.input label {
+  /* Heading M */
+  font-size: var(--fs-heading-m);
+  font-weight: var(--fw-bold);
+  line-height: 1;
+  letter-spacing: calc(var(--fs-heading-m) * -0.05);
+}
+
+.input-numeric {
+  color: var(--clr-gunmetal);
+  background-color: var(--clr-pure-white);
+  width: 100%;
+  border: 1px solid var(--clr-dark-electric-blue);
+  outline: none;
+  padding: var(--padding-block) var(--padding-inline);
+  border-radius: 12px;
+}
+
+.input-numeric:hover,
+.input-numeric:focus-visible {
+  cursor: pointer;
+  border: 1px solid var(--clr-blue);
+}
+
+.input label {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  right: var(--padding-inline);
+  transform: translateY(-50%);
+  color: var(--clr-blue);
+}
+
+.bmi-calculator-input:has(input#metric:checked) #inputs-metric {
+  display: grid;
+}
+
+.bmi-calculator-input:not(:has(input#metric:checked)) #inputs-metric {
+  display: none;
+}
+
+.bmi-calculator-input:has(input#imperial:checked) #inputs-imperial {
+  display: block;
+}
+
+.bmi-calculator-input:not(:has(input#imperial:checked)) #inputs-imperial {
+  display: none;
+}
+
+.input-error {
+  color: var(--clr-red);
+  border: 1px solid var(--clr-red);
+  /* outline: 2px solid var(--clr-red); */
+}
+
+.error {
+  position: absolute;
+  color: var(--clr-red);
+  bottom: 0;
+  right: 1.5rem;
+  /*   transform: translateY(calc(100% + 0.25rem)); */
+}
+
+/* ----- Results ----- */
+
+.bmi-calculator-output {
+  padding: 2rem; /* 32px */
+  border-radius: 1rem; /* 16px */
+
+  @container (width > 450px) {
+    border-radius: 1rem 80px 80px 1rem;
+  }
+}
+
+.bmi-calculator-output > * {
+  display: grid;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+#results__bmi-score {
+  display: block;
+  margin-block-start: 8px;
+}
+
+/* ----- List Cards ----- */
+
+/* ----- (Tip) List Cards ----- */
+
+.three-columns {
+  display: grid;
+  row-gap: 2.5rem; /* 40px */
+  column-gap: 2rem; /* 32px */
+  align-items: start;
+  justify-content: center;
+
+  @media (width > 992px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.list--tips {
+  container-type: inline-size;
+}
+
+.tip {
+  display: grid;
+  align-items: center;
+  row-gap: 2rem; /* (m) 32px -> (d) 45px */
+  column-gap: 2.5rem; /* 40px */
+
+  @media (width > 600px) {
+    grid-template-columns: 4rem 1fr;
+  }
+
+  @media (width > 992px) {
+    grid-template-columns: unset;
+    row-gap: 2.8125rem; /* (m) 32px -> (d) 45px */
+  }
+}
+
+.tip > div {
+  display: grid;
+  gap: 1.5rem; /* 24px */
+}
+
+/* ----- (Limitations) List Cards ----- */
+
+.limitation {
+  background-color: var(--clr-pure-white);
+  box-shadow: var(--clr-shadow);
+  border-radius: 16px;
+  padding: var(--space-400);
+
+  display: flex;
+  flex-wrap: wrap;
+  align-content: start;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* ----- Utilities ----- */
+
+.hidden {
+  display: none;
+}
+
+/* ----- Visually hidden utility ----- */
+
+/* Source: https://www.scottohara.me/blog/2023/03/21/visually-hidden-hack.html */
+/* sometimes referred to as .sr-only */
+
+.visually-hidden:not(:focus):not(:active):not(:focus-within) {
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+/* ----- Style Sheet End ----- */
