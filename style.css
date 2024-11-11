@@ -32,6 +32,13 @@
     hsl(from #d6e6fe h s l / 1),
     hsl(from #d6fcfe h s l / 0)
   ); /* #d6e6fe / 100% -> #d6fcfe / 0% */
+
+  /* --clr-gradient1: linear-gradient(
+    -69.903deg,
+    #d6e6fe 0%,
+    rgba(214, 252, 254, 0%) 100%
+  ); */
+
   --clr-gradient2: linear-gradient(
     to top left,
     hsl(from #d6e6fe h s l / 0.35),
@@ -439,10 +446,6 @@ main {
 
   & > p {
     text-wrap: balance;
-  }
-
-  @media (width > 992px) {
-    /* padding-inline-end: 90px; */
   }
 }
 

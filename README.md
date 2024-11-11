@@ -113,6 +113,8 @@ Hmm 🤔 ...
 
 Specific areas that the solution should be improved (known issues):
 
+- The linear gradient behind the hero text is clearly off. What am I missing about how to translate what is in the Figma design file into proper CSS code? It's clear that the lighter blue color is more present in the design compared to my solution, but I am not quite sure how to achieve that effect.
+  - One option, a Figma plugin, [Figma Solid and Gradient to CSS](https://www.figma.com/community/plugin/1372671206451937478/figma-solid-and-gradient-to-css), which I tried and it did give me something, but it didn't seem to be much better, so I will have to keep playing with it.
 - The border radius for the results `div` don't seem quite right when switching to the desktop version with a slightly rounded corners on the left side and full on pill rounded corners on the right side. Specifying the right side at a very large value seems to impact the left side. I am not 100% sure why.
   - [`border-radius`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius)
   - [Avoid elliptical shape in CSS border-radius](https://stackoverflow.com/questions/31617136/avoid-elliptical-shape-in-css-border-radius)
