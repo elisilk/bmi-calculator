@@ -436,6 +436,14 @@ main {
 .hero__text {
   grid-area: text;
   padding-block-end: 2rem;
+
+  & > p {
+    text-wrap: balance;
+  }
+
+  @media (width > 992px) {
+    /* padding-inline-end: 90px; */
+  }
 }
 
 .hero__calculator {
