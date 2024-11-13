@@ -388,7 +388,7 @@ const handleInputChange = (e) => {
 bmiCalculatorForm.addEventListener("submit", handleFormSubmit);
 
 numericInputElements.forEach((element) => {
-  element.addEventListener("change", handleInputChange);
+  element.addEventListener("input", handleInputChange);
 });
 
 // ----------------------------------------
