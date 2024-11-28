@@ -27,7 +27,10 @@
   --clr-body: var(--clr-dark-electric-blue);
   --clr-heading: var(--clr-gunmetal);
 
-  --clr-gradient1: linear-gradient(
+  --clr-gradient1: linear-gradient(130deg, #d6e6fe00, #d6e6fe),
+    linear-gradient(130deg, #d6fcfe00, #d6fcfe);
+
+  --clr-gradient1a: linear-gradient(
     to top left,
     hsl(from #d6e6fe h s l / 1),
     hsl(from #d6fcfe h s l / 0)
@@ -723,6 +726,7 @@ main {
   border: 1px solid var(--clr-dark-electric-blue);
   outline: none;
   padding: var(--padding-block) var(--padding-inline);
+  padding-inline-end: calc(var(--padding-inline) + 3ch);
   border-radius: 12px;
 }
 
@@ -791,6 +795,7 @@ main {
 #results__bmi-score {
   display: block;
   margin-block-start: 8px;
+  overflow: hidden;
 }
 
 /* ----- List Cards ----- */

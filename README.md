@@ -108,6 +108,7 @@ Hmm 🤔 ...
 - Form Validation - I continue to think about and try to implement more effective and efficient ways to process and validate forms. I especially get confused about how to process the [ValidityState](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState) object without having just a bunch of if statements, but I feel like I am getting better at it.
   - [Form Validation Part 2: The Constraint Validation API (JavaScript)](https://css-tricks.com/form-validation-part-2-constraint-validation-api-javascript/) - I like this 4-part series.
   - [Different ways to iterate a NodeList and search for a specific element](https://medium.com/@byverdu/different-ways-to-iterate-a-nodelist-and-search-for-a-specific-element-2e4ee69c8d7f)
+- [`<output>`: The Output element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/output) - Thanks to [@NikitaVologdin](https://www.frontendmentor.io/solutions/bmi-calculator-with-css-custom-properties-and-css-grid-layout-UbFReFXZFx#comment-67404460d54b5cb1def7afb3) for suggesting using this HTML element. I didn't know it existed, but it's definitely appropriate for this case, and [has accessibility advantages](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/output#accessibility) over a `<span>` element.
 
 ### Continued development
 
