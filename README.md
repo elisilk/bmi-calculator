@@ -57,6 +57,7 @@ Users should be able to:
 Hmm 🤔 ...
 
 - BMI - What is it? How do you calculate it?
+  - [BMI Calculator](https://www.calculator.net/bmi-calculator.html)
   - [Calculate Your Body Mass Index](https://www.nhlbi.nih.gov/health/educational/lose_wt/BMI/bmi-m.htm)
   - [Body Mass Index (BMI)](https://my.clevelandclinic.org/health/articles/9464-body-mass-index-bmi)
   - [BMI Calculation Formula Explained](https://www.registerednursern.com/bmi-calculation-formula-explained/)
